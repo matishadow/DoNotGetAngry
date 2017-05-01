@@ -106,3 +106,14 @@ tmtagsHistory
 *.sublime-project
 *.sublime-workspace
 .bundle
+*.aux
+
+*.bbl
+
+*.blg
+
+*.pdf
+
+*.gz(busy)
+
+*.out
