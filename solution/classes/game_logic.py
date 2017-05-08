@@ -41,7 +41,7 @@ class Game:
 
                     throw = Dice.throw_the_dice()
                     if throw_was_maximum(throw):
-                        counter_index = self.board.move_counter(counter_index, throw)
+                        counter_index = self.board.move_counter(counter_index, throw, current_player)
 
                         throw = Dice.throw_the_dice()
                         if throw_was_maximum(throw):
@@ -51,15 +51,15 @@ class Game:
                                 break
 
                             elif decision == UserDecision.MOVE.name:
-                                self.board.move_counter(counter_index, throw)
+                                self.board.move_counter(counter_index, throw, current_player)
                                 break
                             else:
                                 raise Exception("User input is not valid. Use 'OUT[0] or MOVE[1]'")
                         else:
-                            self.board.move_counter(counter_index, throw)
+                            self.board.move_counter(counter_index, throw, current_player)
                             break
                     else:
-                        self.board.move_counter(counter_index, throw)
+                        self.board.move_counter(counter_index, throw, current_player)
                         break
 
         else:
@@ -108,6 +108,7 @@ class Player:
         self.color = color
         self.starting_tiles = self.SPECIAL_TILES_COUNT * [Counter(color)]
         self.home_tiles = []
+        self.on_board_counters = []
 
 
 class Board:
@@ -119,7 +120,7 @@ class Board:
         self.number_of_players = number_of_players
         self.tiles = [None] * self.TILES_COUNT
 
-    def move_counter(self, current_position, offset):
+    def move_counter(self, current_position, offset, player):
         counter = self.tiles[current_position]
         self.tiles[current_position] = None
         new_position = current_position + offset
@@ -134,6 +135,7 @@ class Board:
         counter.position = counter_index
 
         self.tiles[counter_index] = counter
+        player.on_board_counters.append(counter)
 
         return counter_index
 
