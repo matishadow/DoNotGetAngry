@@ -69,14 +69,18 @@ class Game:
                 throw_count += 1
 
                 if throw_was_maximum(throw):
-
+                    decision = user_decision_callback()
+                    if decision == UserDecision.OUT.name:
+                        self.board.bring_out_counter(current_player, player_index)
+                    elif decision == UserDecision.MOVE.name:
+                        self.board.move_when_out(current_player, throw, user_counter_chosen_callback)
+                    else:
+                        raise Exception("User input is not valid. Use 'OUT[0] or MOVE[1]'")
                 else:
-
-                    self.board.move_counter()
+                    self.board.move_when_out(current_player, throw, user_counter_chosen_callback)
 
                 if throw_count > self.MAXIMUM_THROW_RETRIES or throw != self.MAXIMUM_NUMBER_OF_DOTS:
                     break
-
 
         self.current_color = next(self.color_cycle)
 
@@ -112,7 +116,6 @@ class Player:
 
 
 class Board:
-
     TILES_COUNT = 40
     TILES_PER_PLAYER = 10
 
@@ -128,6 +131,20 @@ class Board:
         counter.position = new_position
 
         return new_position
+
+    def move_when_out(self, current_player, throw, user_counter_chosen_callback):
+        if len(current_player.on_board_counters) == 1:
+            [counter] = current_player.on_board_counters
+            self.move_counter(counter.position, throw, current_player)
+        else:
+            counter_to_move_index = user_counter_chosen_callback()
+            counter = self.tiles[counter_to_move_index]
+            if not counter:
+                raise Exception("This field is empty")
+            if counter.color != current_player.color:
+                raise Exception("This is not your counter!")
+
+            self.move_counter(counter.position, throw, current_player)
 
     def bring_out_counter(self, player, player_index):
         counter = player.starting_tiles.pop()
