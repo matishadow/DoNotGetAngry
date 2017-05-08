@@ -28,7 +28,7 @@ class Game:
         self.players = [Player(color) for color in self.colors]
         self.board = Board(number_of_players)
 
-    def turn(self, user_decision_callback):
+    def turn(self, user_decision_callback, user_counter_chosen_callback):
         player_index = self.current_color.value
         current_player = self.players[player_index]
 
@@ -63,8 +63,20 @@ class Game:
                         break
 
         else:
-            for i in range(self.NORMAL_THROWS):
+            throw_count = 0
+            while True:
                 throw = Dice.throw_the_dice()
+                throw_count += 1
+
+                if throw_was_maximum(throw):
+
+                else:
+
+                    self.board.move_counter()
+
+                if throw_count > self.MAXIMUM_THROW_RETRIES or throw != self.MAXIMUM_NUMBER_OF_DOTS:
+                    break
+
 
         self.current_color = next(self.color_cycle)
 
@@ -82,8 +94,11 @@ class UserDecision(Enum):
 
 
 class Counter:
+    INITIAL_STARTING_POSITION = -1
+
     def __init__(self, color):
         self.color = color
+        self.position = self.INITIAL_STARTING_POSITION
 
 
 class Player:
@@ -109,12 +124,15 @@ class Board:
         self.tiles[current_position] = None
         new_position = current_position + offset
         self.tiles[new_position] = counter
+        counter.position = new_position
 
         return new_position
 
     def bring_out_counter(self, player, player_index):
         counter = player.starting_tiles.pop()
         counter_index = player_index * self.TILES_PER_PLAYER
+        counter.position = counter_index
+
         self.tiles[counter_index] = counter
 
         return counter_index
