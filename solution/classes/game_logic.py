@@ -68,13 +68,22 @@ class Game:
                 throw_count += 1
 
                 if throw_was_maximum(throw):
-                    decision = user_decision_callback()
-                    if decision == UserDecision.OUT.name:
-                        self.board.bring_out_counter(current_player, self.players)
-                    elif decision == UserDecision.MOVE.name:
-                        self.board.move_when_out(current_player, throw, user_counter_chosen_callback, self.players)
-                    else:
-                        raise Exception("User input is not valid. Use 'OUT[0] or MOVE[1]'")
+                    alert = ""
+                    while True:
+                        decision = user_decision_callback(alert)
+
+                        if decision == UserDecision.OUT.name:
+                            decision_was_valid = self.board.bring_out_counter(current_player, self.players)
+                        elif decision == UserDecision.MOVE.name:
+                            decision_was_valid = self.board.move_when_out(current_player, throw,
+                                                                          user_counter_chosen_callback, self.players)
+                        else:
+                            raise Exception("User input is not valid. Use 'OUT[0] or MOVE[1]'")
+
+                        if decision_was_valid:
+                            break
+                        else:
+                            alert = "You cannot do that"
                 else:
                     self.board.move_when_out(current_player, throw, user_counter_chosen_callback, self.players)
 
@@ -138,9 +147,19 @@ class Board:
     def move_when_out(self, current_player, throw, user_counter_chosen_callback, players):
         if len(current_player.on_board_counters) == 1:
             [counter] = current_player.on_board_counters
+
+            is_decision_valid = self.validate_user_decision(counter.position + throw, current_player)
+            if not is_decision_valid:
+                return False
+
             self.move_counter(counter.position, throw, players)
         else:
             counter_to_move_index = user_counter_chosen_callback()
+
+            is_decision_valid = self.validate_user_decision(counter_to_move_index + throw, current_player)
+            if not is_decision_valid:
+                return False
+
             counter = self.tiles[counter_to_move_index]
             if not counter:
                 raise Exception("This field is empty")
@@ -172,9 +191,21 @@ class Board:
         if is_eliminating:
             self.eliminate_counter(players, counter_index)
 
+    def validate_user_decision(self, position_to_validate, current_player):
+        counter_on_position = self.tiles[position_to_validate]
+        if counter_on_position is not None and counter_on_position.color == current_player.color:
+            return False
+        else:
+            return True
+
     def bring_out_counter(self, current_player, players):
         counter = current_player.starting_tiles.pop()
         counter_index = current_player.first_index_on_board
+
+        is_decision_valid = self.validate_user_decision(counter_index, current_player)
+        if not is_decision_valid:
+            current_player.starting_tiles.append(counter)
+            return False
 
         self.try_eliminate(players, counter, counter_index)
 
