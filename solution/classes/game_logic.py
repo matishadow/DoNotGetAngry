@@ -37,29 +37,29 @@ class Game:
                 throw = Dice.throw_the_dice()
 
                 if throw_was_maximum(throw):
-                    counter_index = self.board.bring_out_counter(current_player, player_index)
+                    counter_index = self.board.bring_out_counter(current_player)
 
                     throw = Dice.throw_the_dice()
                     if throw_was_maximum(throw):
-                        counter_index = self.board.move_counter(counter_index, throw, current_player)
+                        counter_index = self.board.move_counter(counter_index, throw)
 
                         throw = Dice.throw_the_dice()
                         if throw_was_maximum(throw):
                             decision = user_decision_callback()
                             if decision == UserDecision.OUT.name:
-                                self.board.bring_out_counter(current_player, player_index)
+                                self.board.bring_out_counter(current_player)
                                 break
 
                             elif decision == UserDecision.MOVE.name:
-                                self.board.move_counter(counter_index, throw, current_player)
+                                self.board.move_counter(counter_index, throw)
                                 break
                             else:
                                 raise Exception("User input is not valid. Use 'OUT[0] or MOVE[1]'")
                         else:
-                            self.board.move_counter(counter_index, throw, current_player)
+                            self.board.move_counter(counter_index, throw)
                             break
                     else:
-                        self.board.move_counter(counter_index, throw, current_player)
+                        self.board.move_counter(counter_index, throw)
                         break
 
         else:
@@ -71,7 +71,7 @@ class Game:
                 if throw_was_maximum(throw):
                     decision = user_decision_callback()
                     if decision == UserDecision.OUT.name:
-                        self.board.bring_out_counter(current_player, player_index)
+                        self.board.bring_out_counter(current_player)
                     elif decision == UserDecision.MOVE.name:
                         self.board.move_when_out(current_player, throw, user_counter_chosen_callback)
                     else:
@@ -113,6 +113,7 @@ class Player:
         self.starting_tiles = self.SPECIAL_TILES_COUNT * [Counter(color)]
         self.home_tiles = []
         self.on_board_counters = []
+        self.first_index_on_board = color.value * Board.TILES_PER_PLAYER
 
 
 class Board:
@@ -123,7 +124,10 @@ class Board:
         self.number_of_players = number_of_players
         self.tiles = [None] * self.TILES_COUNT
 
-    def move_counter(self, current_position, offset, player):
+    def check_eliminate(self):
+        return True
+
+    def move_counter(self, current_position, offset):
         counter = self.tiles[current_position]
         self.tiles[current_position] = None
         new_position = current_position + offset
@@ -135,7 +139,7 @@ class Board:
     def move_when_out(self, current_player, throw, user_counter_chosen_callback):
         if len(current_player.on_board_counters) == 1:
             [counter] = current_player.on_board_counters
-            self.move_counter(counter.position, throw, current_player)
+            self.move_counter(counter.position, throw)
         else:
             counter_to_move_index = user_counter_chosen_callback()
             counter = self.tiles[counter_to_move_index]
@@ -144,11 +148,11 @@ class Board:
             if counter.color != current_player.color:
                 raise Exception("This is not your counter!")
 
-            self.move_counter(counter.position, throw, current_player)
+            self.move_counter(counter.position, throw)
 
-    def bring_out_counter(self, player, player_index):
+    def bring_out_counter(self, player):
         counter = player.starting_tiles.pop()
-        counter_index = player_index * self.TILES_PER_PLAYER
+        counter_index = player.first_index_on_board
         counter.position = counter_index
 
         self.tiles[counter_index] = counter
