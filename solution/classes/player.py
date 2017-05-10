@@ -16,3 +16,7 @@ class Player:
 
     def has_all_counters_in_starting_position(self):
         return len(self.starting_tiles) == self.SPECIAL_TILES_COUNT
+
+    def has_won(self):
+        not_none_count = sum(counter is not None for counter in self.home_tiles)
+        return not_none_count == self.SPECIAL_TILES_COUNT

@@ -89,3 +89,7 @@ class Game:
 
         self.current_color = next(self.color_cycle)
 
+        if current_player.has_won():
+            return True
+        else:
+            return False
