@@ -9,7 +9,6 @@ from classes.dice import Dice
 class Game:
     MINIMAL_NUMBER_OF_PLAYERS = 2
     ALL_COUNTERS_IN_STARTING_THROWS = 3
-    MAXIMUM_NUMBER_OF_DOTS = 6
     NORMAL_THROWS = 1
     MAXIMUM_THROW_RETRIES = 3
 
@@ -27,19 +26,19 @@ class Game:
         player_index = self.current_color.value
         current_player = self.players[player_index]
 
-        if player_has_all_counters_in_starting_position(current_player):
+        if current_player.has_all_counters_in_starting_position():
             for i in range(self.ALL_COUNTERS_IN_STARTING_THROWS):
                 throw = Dice.throw_the_dice()
 
-                if throw_was_maximum(throw):
+                if Dice.throw_was_maximum(throw):
                     counter_index = self.board.bring_out_counter(current_player, self.players)
 
                     throw = Dice.throw_the_dice()
-                    if throw_was_maximum(throw):
+                    if Dice.throw_was_maximum(throw):
                         counter_index = self.board.move_counter(counter_index, throw, self.players)
 
                         throw = Dice.throw_the_dice()
-                        if throw_was_maximum(throw):
+                        if Dice.throw_was_maximum(throw):
                             decision = user_decision_callback()
                             if decision == UserDecision.OUT.name:
                                 self.board.bring_out_counter(current_player, self.players)
@@ -62,7 +61,10 @@ class Game:
                 throw = Dice.throw_the_dice()
                 throw_count += 1
 
-                if throw_was_maximum(throw):
+                can_decision_be_valid = self.board.can_decision_be_valid(current_player, throw)
+                if not can_decision_be_valid:
+                    break
+                if Dice.throw_was_maximum(throw):
                     alert = ""
                     while True:
                         decision = user_decision_callback(alert)
@@ -82,15 +84,12 @@ class Game:
                 else:
                     self.board.move_when_out(current_player, throw, user_counter_chosen_callback, self.players)
 
-                if throw_count > self.MAXIMUM_THROW_RETRIES or throw != self.MAXIMUM_NUMBER_OF_DOTS:
+                if throw_count > self.MAXIMUM_THROW_RETRIES or throw != Dice.MAXIMUM_NUMBER_OF_DOTS:
                     break
 
         self.current_color = next(self.color_cycle)
 
-
-def player_has_all_counters_in_starting_position(player):
-    return len(player.starting_tiles) == player.SPECIAL_TILES_COUNT
-
-
-def throw_was_maximum(throw):
-    return throw == Game.MAXIMUM_NUMBER_OF_DOTS
+        if current_player.has_won():
+            return True
+        else:
+            return False
