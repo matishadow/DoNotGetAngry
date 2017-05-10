@@ -26,19 +26,19 @@ class Game:
         player_index = self.current_color.value
         current_player = self.players[player_index]
 
-        if player_has_all_counters_in_starting_position(current_player):
+        if current_player.has_all_counters_in_starting_position():
             for i in range(self.ALL_COUNTERS_IN_STARTING_THROWS):
                 throw = Dice.throw_the_dice()
 
-                if throw_was_maximum(throw):
+                if Dice.throw_was_maximum(throw):
                     counter_index = self.board.bring_out_counter(current_player, self.players)
 
                     throw = Dice.throw_the_dice()
-                    if throw_was_maximum(throw):
+                    if Dice.throw_was_maximum(throw):
                         counter_index = self.board.move_counter(counter_index, throw, self.players)
 
                         throw = Dice.throw_the_dice()
-                        if throw_was_maximum(throw):
+                        if Dice.throw_was_maximum(throw):
                             decision = user_decision_callback()
                             if decision == UserDecision.OUT.name:
                                 self.board.bring_out_counter(current_player, self.players)
@@ -61,7 +61,7 @@ class Game:
                 throw = Dice.throw_the_dice()
                 throw_count += 1
 
-                if throw_was_maximum(throw):
+                if Dice.throw_was_maximum(throw):
                     alert = ""
                     while True:
                         decision = user_decision_callback(alert)
@@ -90,6 +90,3 @@ class Game:
 def player_has_all_counters_in_starting_position(player):
     return len(player.starting_tiles) == player.SPECIAL_TILES_COUNT
 
-
-def throw_was_maximum(throw):
-    return throw == Dice.MAXIMUM_NUMBER_OF_DOTS
