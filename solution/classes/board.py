@@ -1,6 +1,10 @@
 from classes.counter import Counter
 
 
+def is_position_beyond_home(current_position, throw, player):
+    return (current_position + throw) > player.last_index_with_home
+
+
 class Board:
     TILES_COUNT = 40
     TILES_PER_PLAYER = 10
@@ -25,7 +29,7 @@ class Board:
         if len(current_player.on_board_counters) == 1:
             [counter] = current_player.on_board_counters
 
-            is_decision_valid = self.validate_user_decision(counter.position + throw, current_player)
+            is_decision_valid = self.validate_user_decision(counter.position, throw, current_player)
             if not is_decision_valid:
                 return False
 
@@ -33,7 +37,7 @@ class Board:
         else:
             counter_to_move_index = user_counter_chosen_callback()
 
-            is_decision_valid = self.validate_user_decision(counter_to_move_index + throw, current_player)
+            is_decision_valid = self.validate_user_decision(counter_to_move_index, throw, current_player)
             if not is_decision_valid:
                 return False
 
@@ -68,9 +72,15 @@ class Board:
         if is_eliminating:
             self.eliminate_counter(players, counter_index)
 
-    def validate_user_decision(self, position_to_validate, current_player):
-        counter_on_position = self.tiles[position_to_validate]
-        if counter_on_position is not None and counter_on_position.color == current_player.color:
+    def validate_user_decision(self, current_position, throw, current_player):
+        position_to_validate = current_position + throw
+        current_counter = self.tiles[current_position]
+        if current_counter.is_close_to_home(current_player) and \
+                is_position_beyond_home(current_position, throw, current_player):
+            return False
+
+        counter_on_desired_position = self.tiles[position_to_validate]
+        if counter_on_desired_position is not None and counter_on_desired_position.color == current_player.color:
             return False
         else:
             return True
@@ -79,7 +89,7 @@ class Board:
         counter = current_player.starting_tiles.pop()
         counter_index = current_player.first_index_on_board
 
-        is_decision_valid = self.validate_user_decision(counter_index, current_player)
+        is_decision_valid = self.validate_user_decision(counter_index, 0, current_player)
         if not is_decision_valid:
             current_player.starting_tiles.append(counter)
             return False

@@ -9,7 +9,6 @@ from classes.dice import Dice
 class Game:
     MINIMAL_NUMBER_OF_PLAYERS = 2
     ALL_COUNTERS_IN_STARTING_THROWS = 3
-    MAXIMUM_NUMBER_OF_DOTS = 6
     NORMAL_THROWS = 1
     MAXIMUM_THROW_RETRIES = 3
 
@@ -82,7 +81,7 @@ class Game:
                 else:
                     self.board.move_when_out(current_player, throw, user_counter_chosen_callback, self.players)
 
-                if throw_count > self.MAXIMUM_THROW_RETRIES or throw != self.MAXIMUM_NUMBER_OF_DOTS:
+                if throw_count > self.MAXIMUM_THROW_RETRIES or throw != Dice.MAXIMUM_NUMBER_OF_DOTS:
                     break
 
         self.current_color = next(self.color_cycle)
@@ -93,4 +92,4 @@ def player_has_all_counters_in_starting_position(player):
 
 
 def throw_was_maximum(throw):
-    return throw == Game.MAXIMUM_NUMBER_OF_DOTS
+    return throw == Dice.MAXIMUM_NUMBER_OF_DOTS
