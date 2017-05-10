@@ -1,8 +1,12 @@
 from classes.counter import Counter
 
 
-def is_position_beyond_home(current_position, throw, player):
-    return (current_position + throw) > player.last_index_with_home
+def is_position_beyond_home(current_position, throw, player, is_home_tile):
+    new_position = current_position + throw
+    if is_home_tile:
+        return new_position > (player.SPECIAL_TILES_COUNT - 1);
+    else:
+        return new_position > player.last_index_with_home
 
 
 class Board:
@@ -13,15 +17,22 @@ class Board:
         self.number_of_players = number_of_players
         self.tiles = [None] * self.TILES_COUNT
 
-    def move_counter(self, current_position, offset, players):
-        counter = self.tiles[current_position]
-        self.tiles[current_position] = None
+    def move_counter(self, counter, offset, players, is_home_tile=False):
+        current_position = counter.position
+        current_player = players[counter.color.value]
+        if is_home_tile:
+            counter_collection = current_player.home_tiles
+        else:
+            counter_collection = self.tiles
+
+        counter = counter_collection[current_position]
+        counter_collection[current_position] = None
         new_position = current_position + offset
-
-        self.try_eliminate(players, counter, new_position)
-
-        self.tiles[new_position] = counter
+        counter_collection[new_position] = counter
         counter.position = new_position
+
+        if not is_home_tile:
+            self.try_eliminate(players, counter, new_position)
 
         return new_position
 
@@ -33,21 +44,25 @@ class Board:
             if not is_decision_valid:
                 return False
 
-            self.move_counter(counter.position, throw, players)
+            self.move_counter(counter, throw, players)
         else:
-            counter_to_move_index = user_counter_chosen_callback()
+            counter_to_move_index, is_home_tile = user_counter_chosen_callback()
 
             is_decision_valid = self.validate_user_decision(counter_to_move_index, throw, current_player)
             if not is_decision_valid:
                 return False
 
-            counter = self.tiles[counter_to_move_index]
+            if is_home_tile:
+                counter = current_player.home_tiles[counter_to_move_index]
+            else:
+                counter = self.tiles[counter_to_move_index]
+
             if not counter:
                 raise Exception("This field is empty")
             if counter.color != current_player.color:
                 raise Exception("This is not your counter!")
 
-            self.move_counter(counter.position, throw, players)
+            self.move_counter(counter, throw, players, is_home_tile)
 
     def check_eliminate(self, moving_color, position):
         counter_on_position = self.tiles[position]
@@ -72,15 +87,22 @@ class Board:
         if is_eliminating:
             self.eliminate_counter(players, counter_index)
 
-    def validate_user_decision(self, current_position, throw, current_player):
+    def validate_user_decision(self, current_position, throw, current_player, is_home_tile=False):
+        if is_home_tile:
+            counter_collection = current_player.home_tiles
+        else:
+            counter_collection = self.tiles
+
         position_to_validate = current_position + throw
-        current_counter = self.tiles[current_position]
+        current_counter = counter_collection[current_position]
+
         if current_counter.is_close_to_home(current_player) and \
                 is_position_beyond_home(current_position, throw, current_player):
             return False
 
-        counter_on_desired_position = self.tiles[position_to_validate]
-        if counter_on_desired_position is not None and counter_on_desired_position.color == current_player.color:
+        counter_on_desired_position = counter_collection[position_to_validate]
+        if counter_on_desired_position is not None \
+                and counter_on_desired_position.color == current_player.color:
             return False
         else:
             return True
