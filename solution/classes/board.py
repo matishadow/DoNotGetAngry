@@ -1,4 +1,5 @@
 from classes.counter import Counter
+from classes.dice import Dice
 
 
 def is_position_beyond_home(current_position, throw, player, is_home_tile):
@@ -86,6 +87,18 @@ class Board:
         is_eliminating = self.check_eliminate(counter.color, counter_index)
         if is_eliminating:
             self.eliminate_counter(players, counter_index)
+
+    def can_decision_be_valid(self, player, throw):
+        can_move_counter = False
+        if Dice.throw_was_maximum(throw):
+            can_bring_out_counter = self.validate_user_decision(player.first_index_on_board, 0, player)
+        else:
+            can_bring_out_counter = False
+
+        for counter in player.on_board_counters:
+            can_move_counter = can_move_counter or self.validate_user_decision(counter.position, throw, player)
+
+        return can_move_counter or can_bring_out_counter
 
     def validate_user_decision(self, current_position, throw, current_player, is_home_tile=False):
         if is_home_tile:

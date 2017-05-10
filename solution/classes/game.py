@@ -61,6 +61,9 @@ class Game:
                 throw = Dice.throw_the_dice()
                 throw_count += 1
 
+                can_decision_be_valid = self.board.can_decision_be_valid(current_player, throw)
+                if not can_decision_be_valid:
+                    break
                 if Dice.throw_was_maximum(throw):
                     alert = ""
                     while True:
@@ -85,8 +88,4 @@ class Game:
                     break
 
         self.current_color = next(self.color_cycle)
-
-
-def player_has_all_counters_in_starting_position(player):
-    return len(player.starting_tiles) == player.SPECIAL_TILES_COUNT
 
