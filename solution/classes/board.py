@@ -26,14 +26,14 @@ class Board:
         else:
             counter_collection = self.tiles
 
-        counter = counter_collection[current_position]
         counter_collection[current_position] = None
         new_position = current_position + offset
-        counter_collection[new_position] = counter
-        counter.position = new_position
 
         if not is_home_tile:
             self.try_eliminate(players, counter, new_position)
+
+        counter_collection[new_position] = counter
+        counter.position = new_position
 
         return new_position
 
@@ -109,8 +109,8 @@ class Board:
         position_to_validate = current_position + throw
         current_counter = counter_collection[current_position]
 
-        if current_counter.is_close_to_home(current_player) and \
-                is_position_beyond_home(current_position, throw, current_player):
+        if current_counter is not None and current_counter.is_close_to_home(current_player) and \
+                is_position_beyond_home(current_position, throw, current_player, is_home_tile):
             return False
 
         counter_on_desired_position = counter_collection[position_to_validate]

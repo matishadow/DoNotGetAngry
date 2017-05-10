@@ -35,7 +35,8 @@ class Game:
 
                     throw = Dice.throw_the_dice()
                     if Dice.throw_was_maximum(throw):
-                        counter_index = self.board.move_counter(counter_index, throw, self.players)
+                        counter = self.board.tiles[counter_index]
+                        counter_index = self.board.move_counter(counter, throw, self.players)
 
                         throw = Dice.throw_the_dice()
                         if Dice.throw_was_maximum(throw):
@@ -44,15 +45,18 @@ class Game:
                                 self.board.bring_out_counter(current_player, self.players)
                                 break
                             elif decision == UserDecision.MOVE.name:
-                                self.board.move_counter(counter_index, throw, self.players)
+                                counter = self.board.tiles[counter_index]
+                                self.board.move_counter(counter, throw, self.players)
                                 break
                             else:
                                 raise Exception("User input is not valid. Use 'OUT[0] or MOVE[1]'")
                         else:
-                            self.board.move_counter(counter_index, throw, self.players)
+                            counter = self.board.tiles[counter_index]
+                            self.board.move_counter(counter, throw, self.players)
                             break
                     else:
-                        self.board.move_counter(counter_index, throw, self.players)
+                        counter = self.board.tiles[counter_index]
+                        self.board.move_counter(counter, throw, self.players)
                         break
 
         else:
