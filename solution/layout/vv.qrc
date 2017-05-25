@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="counters">
+    <file>../graphics/counter-blue.png</file>
+    <file>../graphics/counter-green.png</file>
+    <file>../graphics/counter-red.png</file>
+    <file>../graphics/counter-yellow.png</file>
+  </qresource>
+</RCC>
