@@ -21,6 +21,7 @@ class Game:
         self.current_color = next(self.color_cycle)
         self.players = [Player(color) for color in self.colors]
         self.board = Board(number_of_players)
+        self.dice = Dice()
 
     def turn(self, user_decision_callback, user_counter_chosen_callback):
         player_index = self.current_color.value
@@ -28,17 +29,17 @@ class Game:
 
         if current_player.has_all_counters_in_starting_position():
             for i in range(self.ALL_COUNTERS_IN_STARTING_THROWS):
-                throw = Dice.throw_the_dice()
+                throw = self.dice.throw_the_dice()
 
                 if Dice.throw_was_maximum(throw):
                     counter_index = self.board.bring_out_counter(current_player, self.players)
 
-                    throw = Dice.throw_the_dice()
+                    throw = self.dice.throw_the_dice()
                     if Dice.throw_was_maximum(throw):
                         counter = self.board.tiles[counter_index]
                         counter_index = self.board.move_counter(counter, throw, self.players)
 
-                        throw = Dice.throw_the_dice()
+                        throw = self.dice.throw_the_dice()
                         if Dice.throw_was_maximum(throw):
                             decision = user_decision_callback()
                             if decision == UserDecision.OUT.name:
@@ -62,7 +63,7 @@ class Game:
         else:
             throw_count = 0
             while True:
-                throw = Dice.throw_the_dice()
+                throw = self.dice.throw_the_dice()
                 throw_count += 1
 
                 can_decision_be_valid = self.board.can_decision_be_valid(current_player, throw)
