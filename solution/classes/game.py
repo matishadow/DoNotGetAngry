@@ -22,6 +22,7 @@ class Game:
         self.players = [Player(color) for color in self.colors]
         self.board = Board(number_of_players)
         self.dice = Dice()
+        self.decision_was_valid = True
 
     def turn(self, user_decision_callback, user_counter_chosen_callback):
         player_index = self.current_color.value
@@ -29,17 +30,17 @@ class Game:
 
         if current_player.has_all_counters_in_starting_position():
             for i in range(self.ALL_COUNTERS_IN_STARTING_THROWS):
-                throw = self.dice.throw_the_dice()
+                throw = self.dice.throw_the_dice(self.decision_was_valid)
 
                 if Dice.throw_was_maximum(throw):
                     counter_index = self.board.bring_out_counter(current_player, self.players)
 
-                    throw = self.dice.throw_the_dice()
+                    throw = self.dice.throw_the_dice(self.decision_was_valid)
                     if Dice.throw_was_maximum(throw):
                         counter = self.board.tiles[counter_index]
                         counter_index = self.board.move_counter(counter, throw, self.players)
 
-                        throw = self.dice.throw_the_dice()
+                        throw = self.dice.throw_the_dice(self.decision_was_valid)
                         if Dice.throw_was_maximum(throw):
                             decision = user_decision_callback()
                             if decision == UserDecision.OUT.name:
@@ -63,7 +64,7 @@ class Game:
         else:
             throw_count = 0
             while True:
-                throw = self.dice.throw_the_dice()
+                throw = self.dice.throw_the_dice(self.decision_was_valid)
                 throw_count += 1
 
                 can_decision_be_valid = self.board.can_decision_be_valid(current_player, throw)
@@ -77,17 +78,19 @@ class Game:
                         if decision == UserDecision.OUT.name:
                             decision_was_valid = self.board.bring_out_counter(current_player, self.players)
                         elif decision == UserDecision.MOVE.name:
-                            decision_was_valid = self.board.move_when_out(current_player, throw,
-                                                                          user_counter_chosen_callback, self.players)
+                            decision_was_valid = self.board.move_when_out(
+                                current_player, throw, user_counter_chosen_callback, self.players, self)
                         else:
                             raise Exception("User input is not valid. Use 'OUT[0] or MOVE[1]'")
+
+                        self.decision_was_valid = decision_was_valid
 
                         if decision_was_valid:
                             break
                         else:
                             alert = "You cannot do that"
                 else:
-                    self.board.move_when_out(current_player, throw, user_counter_chosen_callback, self.players)
+                    self.board.move_when_out(current_player, throw, user_counter_chosen_callback, self.players, self)
 
                 if throw_count > self.MAXIMUM_THROW_RETRIES or throw != Dice.MAXIMUM_NUMBER_OF_DOTS:
                     break

@@ -5,11 +5,14 @@ class Dice:
     MAXIMUM_NUMBER_OF_DOTS = 6
 
     def __init__(self):
-        self.last_throw = -1
+        self.last_throw = None
 
-    def throw_the_dice(self):
-        throw = randint(1, 6)
-        self.last_throw = throw
+    def throw_the_dice(self, decision_was_valid):
+        if decision_was_valid:
+            throw = randint(1, 6)
+            self.last_throw = throw
+        else:
+            throw = self.last_throw
 
         return throw
 

@@ -37,7 +37,7 @@ class Board:
 
         return new_position
 
-    def move_when_out(self, current_player, throw, user_counter_chosen_callback, players):
+    def move_when_out(self, current_player, throw, user_counter_chosen_callback, players, game):
         if len(current_player.on_board_counters) == 1:
             [counter] = current_player.on_board_counters
 
@@ -59,8 +59,10 @@ class Board:
                 counter = self.tiles[counter_to_move_index]
 
             if not counter:
+                game.decision_was_valid = False
                 raise Exception("This field is empty")
             if counter.color != current_player.color:
+                game.decision_was_valid = False
                 raise Exception("This is not your counter!")
 
             self.move_counter(counter, throw, players, is_home_tile)
@@ -106,7 +108,7 @@ class Board:
         else:
             counter_collection = self.tiles
 
-        position_to_validate = current_position + throw
+        position_to_validate = (current_position + throw) % Board.TILES_COUNT
         current_counter = counter_collection[current_position]
 
         if current_counter is not None and current_counter.is_close_to_home(current_player) and \
