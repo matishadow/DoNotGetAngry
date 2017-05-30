@@ -27,7 +27,7 @@ class Board:
             counter_collection = self.tiles
 
         counter_collection[current_position] = None
-        new_position = current_position + offset
+        new_position = (current_position + offset) % Board.TILES_COUNT
 
         if not is_home_tile:
             self.try_eliminate(players, counter, new_position)
