@@ -86,6 +86,7 @@ class Game:
                         self.decision_was_valid = decision_was_valid
 
                         if decision_was_valid:
+                            alert = ""
                             break
                         else:
                             alert = "You cannot do that"
