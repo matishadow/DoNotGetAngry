@@ -455,10 +455,39 @@ class Ui_Dialog(object):
         self.blue_home_tile_0.setText(_fromUtf8(""))
         self.blue_home_tile_0.setObjectName(_fromUtf8("blue_home_tile_0"))
 
-        self.example_dice = QtGui.QPushButton(Dialog)
-        self.example_dice.setGeometry(QtCore.QRect(1000, 200, 150, 150))
-        self.example_dice.setObjectName(_fromUtf8("example_dice"))
-        self.example_dice.setText(_fromUtf8("DICE"))
+        self.dice = QtGui.QPushButton(Dialog)
+        self.dice.setGeometry(QtCore.QRect(1000, 410, 75, 81))
+        self.dice.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
+                                          "border-image: url(../graphics/dice1.png);\n"
+                                          "background-repeat:no-repeat;"))
+        self.dice.setText(_fromUtf8(""))
+        self.dice.setObjectName(_fromUtf8("dice"))
+        self.title = QtGui.QLabel(Dialog)
+        self.title.setGeometry(QtCore.QRect(840, 50, 381, 51))
+        self.title.setStyleSheet(
+            _fromUtf8("background-image:url(../graphics/title.png); background-repeat:no-repeat;"))
+        self.title.setText(_fromUtf8(""))
+        self.title.setObjectName(_fromUtf8("title"))
+        self.startbutton = QtGui.QPushButton(Dialog)
+        self.startbutton.setGeometry(QtCore.QRect(900, 180, 248, 73))
+        self.startbutton.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
+                                                 "background-image: url(../graphics/start.png);\n"
+                                                 "background-repeat:no-repeat;"))
+        self.startbutton.setText(_fromUtf8(""))
+        self.startbutton.setObjectName(_fromUtf8("startbutton"))
+        self.label_2 = QtGui.QLabel(Dialog)
+        self.label_2.setGeometry(QtCore.QRect(950, 320, 121, 31))
+        self.label_2.setStyleSheet(_fromUtf8("font-size:20px;"))
+        self.label_2.setTextFormat(QtCore.Qt.AutoText)
+        self.label_2.setObjectName(_fromUtf8("label_2"))
+        self.label_3 = QtGui.QLabel(Dialog)
+        self.label_3.setGeometry(QtCore.QRect(1070, 310, 43, 44))
+        self.label_3.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
+                                             "background-image: url(../graphics/counter-red.png);\n"
+                                             "background-repeat:no-repeat;"))
+        self.label_3.setText(_fromUtf8(""))
+        self.label_3.setObjectName(_fromUtf8("label_3"))
+        self.label_2.setText(_translate("Dialog", "Kolej gracza:", None))
 
         LayoutMethodsInserter.insert_methods(self)
 
