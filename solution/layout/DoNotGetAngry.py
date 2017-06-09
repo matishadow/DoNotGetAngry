@@ -7,6 +7,8 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+from classes.layout_methods_inserter import LayoutMethodsInserter
+from classes.tile_button_decoder import TileButtonDecoder
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -26,6 +28,11 @@ except AttributeError:
 
 
 class Ui_Dialog(object):
+    def tile_click(self, button):
+        button_name = button.objectName()
+        tile_index, colour, is_home_tile, is_starting_tile = TileButtonDecoder.decode_button_name(button_name)
+        a = 5
+
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
         Dialog.resize(1280, 720)
@@ -56,28 +63,28 @@ class Ui_Dialog(object):
         self.blue_starting_tile_0 = QtGui.QPushButton(Dialog)
         self.blue_starting_tile_0.setGeometry(QtCore.QRect(191, 70, 41, 41))
         self.blue_starting_tile_0.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
-                                                          "border-image: url(:/counters/graphics/counter-blue.png);\n"
+                                                          "border-image: url(../graphics/counter-blue.png);\n"
                                                           "background-repeat:no-repeat;"))
         self.blue_starting_tile_0.setText(_fromUtf8(""))
         self.blue_starting_tile_0.setObjectName(_fromUtf8("blue_starting_tile_0"))
         self.blue_starting_tile_1 = QtGui.QPushButton(Dialog)
         self.blue_starting_tile_1.setGeometry(QtCore.QRect(241, 70, 41, 41))
         self.blue_starting_tile_1.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
-                                                          "background-image: url(:/counters/graphics/counter-blue.png);\n"
+                                                          "background-image: url(../graphics/counter-blue.png);\n"
                                                           "background-repeat:no-repeat;"))
         self.blue_starting_tile_1.setText(_fromUtf8(""))
         self.blue_starting_tile_1.setObjectName(_fromUtf8("blue_starting_tile_1"))
         self.blue_starting_tile_2 = QtGui.QPushButton(Dialog)
         self.blue_starting_tile_2.setGeometry(QtCore.QRect(191, 121, 41, 41))
         self.blue_starting_tile_2.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
-                                                          "border-image: url(:/counters/graphics/counter-blue.png);\n"
+                                                          "border-image: url(../graphics/counter-blue.png);\n"
                                                           "background-repeat:no-repeat;"))
         self.blue_starting_tile_2.setText(_fromUtf8(""))
         self.blue_starting_tile_2.setObjectName(_fromUtf8("blue_starting_tile_2"))
         self.blue_starting_tile_3 = QtGui.QPushButton(Dialog)
         self.blue_starting_tile_3.setGeometry(QtCore.QRect(241, 121, 41, 41))
         self.blue_starting_tile_3.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
-                                                          "border-image: url(:/counters/graphics/counter-blue.png);\n"
+                                                          "border-image: url(../graphics/counter-blue.png);\n"
                                                           "background-repeat:no-repeat;"))
         self.blue_starting_tile_3.setText(_fromUtf8(""))
         self.blue_starting_tile_3.setObjectName(_fromUtf8("blue_starting_tile_3"))
@@ -86,84 +93,84 @@ class Ui_Dialog(object):
         self.yellow_starting_tile_0.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.yellow_starting_tile_0.setAutoFillBackground(False)
         self.yellow_starting_tile_0.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
-                                                            "background-image: url(:/counters/graphics/counter-yellow.png);\n"
+                                                            "background-image: url(../graphics/counter-yellow.png);\n"
                                                             "background-repeat:no-repeat;"))
         self.yellow_starting_tile_0.setText(_fromUtf8(""))
         self.yellow_starting_tile_0.setObjectName(_fromUtf8("yellow_starting_tile_0"))
         self.yellow_starting_tile_1 = QtGui.QPushButton(Dialog)
         self.yellow_starting_tile_1.setGeometry(QtCore.QRect(241, 548, 43, 43))
         self.yellow_starting_tile_1.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
-                                                            "background-image: url(:/counters/graphics/counter-yellow.png);\n"
+                                                            "background-image: url(../graphics/counter-yellow.png);\n"
                                                             "background-repeat:no-repeat;"))
         self.yellow_starting_tile_1.setText(_fromUtf8(""))
         self.yellow_starting_tile_1.setObjectName(_fromUtf8("yellow_starting_tile_1"))
         self.yellow_starting_tile_2 = QtGui.QPushButton(Dialog)
         self.yellow_starting_tile_2.setGeometry(QtCore.QRect(191, 598, 43, 43))
         self.yellow_starting_tile_2.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
-                                                            "background-image: url(:/counters/graphics/counter-yellow.png);\n"
+                                                            "background-image: url(../graphics/counter-yellow.png);\n"
                                                             "background-repeat:no-repeat;"))
         self.yellow_starting_tile_2.setText(_fromUtf8(""))
         self.yellow_starting_tile_2.setObjectName(_fromUtf8("yellow_starting_tile_2"))
         self.yellow_starting_tile_3 = QtGui.QPushButton(Dialog)
         self.yellow_starting_tile_3.setGeometry(QtCore.QRect(241, 598, 43, 45))
         self.yellow_starting_tile_3.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
-                                                            "background-image: url(:/counters/graphics/counter-yellow.png);\n"
+                                                            "background-image: url(../graphics/counter-yellow.png);\n"
                                                             "background-repeat:no-repeat;"))
         self.yellow_starting_tile_3.setText(_fromUtf8(""))
         self.yellow_starting_tile_3.setObjectName(_fromUtf8("yellow_starting_tile_3"))
         self.green_starting_tile_0 = QtGui.QPushButton(Dialog)
         self.green_starting_tile_0.setGeometry(QtCore.QRect(673, 548, 43, 44))
         self.green_starting_tile_0.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
-                                                           "background-image: url(:/counters/graphics/counter-green.png);\n"
+                                                           "background-image: url(../graphics/counter-green.png);\n"
                                                            "background-repeat:no-repeat;"))
         self.green_starting_tile_0.setText(_fromUtf8(""))
         self.green_starting_tile_0.setObjectName(_fromUtf8("green_starting_tile_0"))
         self.green_starting_tile_1 = QtGui.QPushButton(Dialog)
         self.green_starting_tile_1.setGeometry(QtCore.QRect(723, 548, 43, 44))
         self.green_starting_tile_1.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
-                                                           "background-image: url(:/counters/graphics/counter-green.png);\n"
+                                                           "background-image: url(../graphics/counter-green.png);\n"
                                                            "background-repeat:no-repeat;"))
         self.green_starting_tile_1.setText(_fromUtf8(""))
         self.green_starting_tile_1.setObjectName(_fromUtf8("green_starting_tile_1"))
         self.green_starting_tile_2 = QtGui.QPushButton(Dialog)
         self.green_starting_tile_2.setGeometry(QtCore.QRect(672, 598, 43, 44))
         self.green_starting_tile_2.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
-                                                           "background-image: url(:/counters/graphics/counter-green.png);\n"
+                                                           "background-image: url(../graphics/counter-green.png);\n"
                                                            "background-repeat:no-repeat;"))
         self.green_starting_tile_2.setText(_fromUtf8(""))
         self.green_starting_tile_2.setObjectName(_fromUtf8("green_starting_tile_2"))
         self.green_starting_tile_3 = QtGui.QPushButton(Dialog)
         self.green_starting_tile_3.setGeometry(QtCore.QRect(723, 598, 43, 44))
         self.green_starting_tile_3.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
-                                                           "background-image: url(:/counters/graphics/counter-green.png);\n"
+                                                           "background-image: url(../graphics/counter-green.png);\n"
                                                            "background-repeat:no-repeat;"))
         self.green_starting_tile_3.setText(_fromUtf8(""))
         self.green_starting_tile_3.setObjectName(_fromUtf8("green_starting_tile_3"))
         self.red_starting_tile_0 = QtGui.QPushButton(Dialog)
         self.red_starting_tile_0.setGeometry(QtCore.QRect(673, 70, 43, 44))
         self.red_starting_tile_0.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
-                                                         "background-image: url(:/counters/graphics/counter-red.png);\n"
+                                                         "background-image: url(../graphics/counter-red.png);\n"
                                                          "background-repeat:no-repeat;"))
         self.red_starting_tile_0.setText(_fromUtf8(""))
         self.red_starting_tile_0.setObjectName(_fromUtf8("red_starting_tile_0"))
         self.red_starting_tile_1 = QtGui.QPushButton(Dialog)
         self.red_starting_tile_1.setGeometry(QtCore.QRect(723, 70, 43, 44))
         self.red_starting_tile_1.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
-                                                         "background-image: url(:/counters/graphics/counter-red.png);\n"
+                                                         "background-image: url(../graphics/counter-red.png);\n"
                                                          "background-repeat:no-repeat;"))
         self.red_starting_tile_1.setText(_fromUtf8(""))
         self.red_starting_tile_1.setObjectName(_fromUtf8("red_starting_tile_1"))
         self.red_starting_tile_2 = QtGui.QPushButton(Dialog)
         self.red_starting_tile_2.setGeometry(QtCore.QRect(673, 120, 43, 44))
         self.red_starting_tile_2.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
-                                                         "background-image: url(:/counters/graphics/counter-red.png);\n"
+                                                         "background-image: url(../graphics/counter-red.png);\n"
                                                          "background-repeat:no-repeat;"))
         self.red_starting_tile_2.setText(_fromUtf8(""))
         self.red_starting_tile_2.setObjectName(_fromUtf8("red_starting_tile_2"))
         self.red_starting_tile_3 = QtGui.QPushButton(Dialog)
         self.red_starting_tile_3.setGeometry(QtCore.QRect(723, 120, 43, 44))
         self.red_starting_tile_3.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
-                                                         "background-image: url(:/counters/graphics/counter-red.png);\n"
+                                                         "background-image: url(../graphics/counter-red.png);\n"
                                                          "background-repeat:no-repeat;"))
         self.red_starting_tile_3.setText(_fromUtf8(""))
         self.red_starting_tile_3.setObjectName(_fromUtf8("red_starting_tile_3"))
@@ -447,6 +454,8 @@ class Ui_Dialog(object):
         self.blue_home_tile_0.setStyleSheet(_fromUtf8("background-color:TRANSPARENT;border:0;"))
         self.blue_home_tile_0.setText(_fromUtf8(""))
         self.blue_home_tile_0.setObjectName(_fromUtf8("blue_home_tile_0"))
+
+        LayoutMethodsInserter.insert_methods(self)
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
