@@ -455,6 +455,11 @@ class Ui_Dialog(object):
         self.blue_home_tile_0.setText(_fromUtf8(""))
         self.blue_home_tile_0.setObjectName(_fromUtf8("blue_home_tile_0"))
 
+        self.example_dice = QtGui.QPushButton(Dialog)
+        self.example_dice.setGeometry(QtCore.QRect(1000, 200, 150, 150))
+        self.example_dice.setObjectName(_fromUtf8("example_dice"))
+        self.example_dice.setText(_fromUtf8("DICE"))
+
         LayoutMethodsInserter.insert_methods(self)
 
         self.retranslateUi(Dialog)
