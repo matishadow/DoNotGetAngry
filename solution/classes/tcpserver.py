@@ -9,14 +9,15 @@ from classes.game import Game
 from classes.dice import Dice
 from classes.counter import *
 from classes import *
-TCPsleep = 0.5
+TCPsleep = 0.01
 
 class TcpServer:
 
 
-    def __init__(self, ihost, iport,idatadecode):
-
-        print("Start Tcpserver@"+str(ihost)+ ":" + str(iport))
+    def __init__(self, ihost, iport,verbose):
+        self.verbose = verbose
+        if self.verbose:
+            print("Start Tcpserver@"+str(ihost)+ ":" + str(iport))
         self.buf = 1024
         self.iaddr = (ihost, iport)
         #oaddr = (ohost,oport)
@@ -28,9 +29,9 @@ class TcpServer:
 
 
     def ireceiveTCP(self,idatadecode):
-        self.iTCPthread = Thread(target=self.istartTCP, args=([self.iaddr]))  # wątek oczekujący na przychodzące połączenia
+        self.iTCPthread = Thread(target=self.istartTCP, args=([self.iaddr,idatadecode]))  # wątek oczekujący na przychodzące połączenia
         self.iTCPthread.start()
-        self.ihandledata(idatadecode)
+        #self.ihandledata(idatadecode)
 
 
     def osendTCP(self,ohost,oport,odatalock,odata):
@@ -62,7 +63,7 @@ class TcpServer:
             sleep(TCPsleep)
 
 
-    def istartTCP(self,addr):
+    def istartTCP(self,addr,idatadecode):
 
         iSock = None  # incoming socket
         try:
@@ -84,7 +85,8 @@ class TcpServer:
                 #print("accept timeout")
             finally:
                 if ex == False:
-                    print(conn)
+                    if self.verbose:
+                        print(conn)
                     try:
                         #conn.settimeout(0.2)
                         bin_idata = conn.recv(self.buf)
@@ -103,7 +105,11 @@ class TcpServer:
                                     #print("startTCP: idataLock")
                                     self.idatanew = True
                                     self.idata = idata
+                                    #zmiana na wątek wywoływany z gameserver
+                                    #self.ihandledata(idatadecode)
+                                    #
                                     self.idatalock.release()
+                                    idatadecode(idata)
                                     break
                                 else:
                                     print("startTCP: idatalock fail")
@@ -116,9 +122,9 @@ class TcpServer:
         idata = None
         idatanew = False
         while True:
-            # print("handledata: while")
+            # print("ihandledata: while")
             if self.idatanew:
-                # print("handledata: idatanew!!!")
+                # print("ihandledata: idatanew!!!")
                 succes = self.idatalock.acquire(False)
                 if (succes & self.idatanew):
                     self.idatanew = False
@@ -127,11 +133,12 @@ class TcpServer:
                     self.idatalock.release()
                     idatanew = True
                 else:
-                    print("handledata: idatalock fail")
+                    print("ihandledata: idatalock fail")
                     sleep(TCPsleep)
             if (idatanew):
                 idatadecode(idata)
                 idatanew = False
+                break
             sleep(TCPsleep)
 
 
