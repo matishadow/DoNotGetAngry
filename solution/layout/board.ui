@@ -1276,24 +1276,6 @@ background-repeat:no-repeat;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="dice">
-   <property name="geometry">
-    <rect>
-     <x>1000</x>
-     <y>410</y>
-     <width>75</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color:transparent;border:0;
-border-image: url(:/dice/graphics/dice1.png);
-background-repeat:no-repeat;</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QLabel" name="title">
    <property name="geometry">
     <rect>
@@ -1359,6 +1341,24 @@ background-repeat:no-repeat;</string>
    <property name="styleSheet">
     <string notr="true">background-color:transparent;border:0;
 background-image: url(:/counters/graphics/counter-red.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>940</x>
+     <y>460</y>
+     <width>181</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+background-image: url(:/dice/graphics/dice1.png);
 background-repeat:no-repeat;</string>
    </property>
    <property name="text">
