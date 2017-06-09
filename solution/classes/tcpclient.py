@@ -19,7 +19,7 @@ class TcpClient:
 
         self.ihost = "localhost"
         self.iport = randint(49152,65535)
-        self.commands = ["creply", "test2", "cprint_msg","cprint_lobby","cprint_status","cprint_board","cprint_current_color","cuserdecision_callback","cuser_counter_choosen_callback","cprint_my_color"]
+        self.commands = ["creply", "test2", "cprint_msg","cprint_lobby","cprint_status","cprint_board","cprint_current_color","cprint_dice","cuserdecision_callback","cuser_counter_choosen_callback","cuser_dice_confirm_callback","cprint_my_color"]
 
 
         self.locallobby = []
@@ -93,6 +93,10 @@ class TcpClient:
         print(data)
         return True
 
+    def cprint_dice(self,data):
+        print(data)
+        return True
+
     def cprint_board(self,data):
         str_board = []
         for index in range(len(data)):
@@ -121,16 +125,24 @@ class TcpClient:
         self.send_to_server("sstart_game", True)
 
     def cuserdecision_callback(self,data):
-        print("dice: " + str(data))
+        #print("dice: " + str(data))
+        self.cprint_dice(data)
         decision = int(input("userdecision_callback :"))
         self.send_to_server("supdate_user_decision_callback",decision)
         return True
 
     def cuser_counter_choosen_callback(self,data):
-        print("dice: " + str(data))
+        self.cprint_dice(data)
         decision = (int(input("user_counter_choosen_callback :")),int(input("is home? :")))
         self.send_to_server("supdate_user_counter_choosen_callback", decision)
         return True
+
+    def cuser_dice_confirm_callback(self,data):
+        self.cprint_dice(data)
+        input("Dice OK?")
+        self.send_to_server("supdate_dice_confirm_callback", True)
+        return True
+
 
 if __name__ == "__main__":
 

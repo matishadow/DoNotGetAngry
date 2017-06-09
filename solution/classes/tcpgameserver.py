@@ -13,7 +13,7 @@ PAUSE = 0.01
 
 class GameServer:
     def __init__(self):
-        self.commands = ["sconnect_to_lobby","sset_ready","supdate_user_decision_callback","supdate_user_counter_choosen_callback"]#, "check_state", "list_lobby", "list_ready", "set_ready","start_game", "check_board", "check_dice", "check_current_color", "move"]
+        self.commands = ["sconnect_to_lobby","sset_ready","supdate_user_decision_callback","supdate_user_counter_choosen_callback","supdate_dice_confirm_callback"]#, "check_state", "list_lobby", "list_ready", "set_ready","start_game", "check_board", "check_dice", "check_current_color", "move"]
         self.odatalock=Lock()
         self.odata = None
         #
@@ -23,6 +23,7 @@ class GameServer:
         self.ts = TcpServer("localhost", 2223,verbose=False)
         self.user_decision_callback_buffer = None #przekazuję odpowiedź callbacka klienta do turn
         self.user_counter_choosen_callback_buffer = None
+        self.user_dice_confirm = False
 
         self.ts.ireceiveTCP(self.decode)
 
@@ -46,12 +47,13 @@ class GameServer:
             self.ssend_current_color_to_all()
             self.ssend_board_to_all()
             try:
-                end_of_game = self.g.turn(self.suserdecision_callback, self.suser_counter_choosen_callback)
+                end_of_game = self.g.turn(self.suserdecision_callback, self.suser_counter_choosen_callback, self.suser_dice_confirm_callback)
             except:
                 print("turn error")
             finally:
-                if end_of_game:
-                    break
+                pass
+                #if end_of_game:
+                #   break
             sleep(PAUSE)
 
 
@@ -235,6 +237,16 @@ class GameServer:
         self.user_counter_choosen_callback_buffer = None
         return ret
 
+    def suser_dice_confirm_callback(self):
+        playerid = self.lobby[self.g.current_color.value][0]
+        dice = self.g.dice.last_throw
+        self.send_to_client(playerid, "cuser_dice_confirm_callback", dice)
+        while (self.user_dice_confirm == None):  # oczekiwanie na odpowiedź przez zmienną
+            sleep(0.5)
+        ret = self.user_dice_confirm
+        self.user_dice_confirm = None
+        return ret
+
     def supdate_user_decision_callback(self,playerid,data):
         self.user_decision_callback_buffer = data
         return True
@@ -242,6 +254,10 @@ class GameServer:
 
     def supdate_user_counter_choosen_callback(self,playerid,data):
         self.user_counter_choosen_callback_buffer = data
+        return True
+
+    def supdate_dice_confirm_callback(self,playerid,data):
+        self.user_dice_confirm = data
         return True
 
 if __name__ == "__main__":
