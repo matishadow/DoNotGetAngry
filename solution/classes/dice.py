@@ -7,7 +7,8 @@ class Dice:
     def __init__(self):
         self.last_throw = None
 
-    def throw_the_dice(self, decision_was_valid):
+    def throw_the_dice(self, decision_was_valid, confirm_callback):
+        confirm_callback()
         if decision_was_valid:
             throw = randint(1, 6)
             self.last_throw = throw
