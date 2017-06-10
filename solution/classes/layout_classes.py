@@ -20,6 +20,10 @@ REMOVE_CSS_STYLE = _fromUtf8("background-color:TRANSPARENT;border:0;")
 COUNTER_CSS_STYLE = _fromUtf8("background-color:transparent;border:0;\n"
                               "border-image: url(graphics/counter-{0}.png);\n"
                               "background-repeat:no-repeat;")
+CURRENT_TURN_TEXT = _fromUtf8("Twoja kolej. Rzuć kostką!")
+EMPTY_TEXT = _fromUtf8("")
+WAIT_TURN_TEXT = _fromUtf8("Poczekaj na swoją kolej!")
+PLAYER_COLOR_LABEL = _fromUtf8("Twój kolor:")
 
 
 class LayoutMethodsInserter:
@@ -562,5 +566,5 @@ class LayoutControlsInserter:
         layout.player_color_placeholder.setStyleSheet(REMOVE_CSS_STYLE)
         layout.player_color_placeholder.setText(_fromUtf8(""))
         layout.player_color_placeholder.setObjectName(_fromUtf8("label_5"))
-        layout.player_color_label.setText(_translate("dialog", "Twój kolor:", None))
-        layout.turn_alert_label.setText(_translate("dialog", "Twoja kolej. Rzuć kostką!", None))
+        layout.player_color_label.setText(_translate("dialog", EMPTY_TEXT, None))
+        layout.turn_alert_label.setText(_translate("dialog", EMPTY_TEXT, None))

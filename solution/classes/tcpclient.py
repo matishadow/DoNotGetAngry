@@ -5,6 +5,7 @@ from threading import Lock
 from time import sleep
 from uuid import uuid4
 from classes.enums import *
+from classes.layout_classes import *
 
 
 class TcpClient:
@@ -84,7 +85,8 @@ class TcpClient:
     def cprint_my_color(self, data):
         self.my_color = data
         print("My color :" + str(data))
-        self.game_window.set_player_color(str(data))
+
+        self.game_window.set_player_color(data)
         return True
 
     def cprint_lobby(self, data):
@@ -111,6 +113,11 @@ class TcpClient:
 
     def cprint_current_color(self, data):
         print(data)
+
+        if self.my_color == data:
+            self.game_window.set_text(self.game_window.turn_alert_label, CURRENT_TURN_TEXT)
+        else:
+            self.game_window.set_text(self.game_window.turn_alert_label, WAIT_TURN_TEXT)
 
     # --------------lobby---------------
     def cconnect_to_lobby(self):

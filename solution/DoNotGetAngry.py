@@ -26,8 +26,12 @@ class Ui_Dialog(object):
         style = str.format(COUNTER_CSS_STYLE, color.lower())
         tile.setStyleSheet(style)
 
+    def set_text(self, control, text):
+        control.setText(_translate("dialog", text, None))
+
     def set_player_color(self, color):
         self.put_counter(self.player_color_placeholder, color)
+        self.set_text(self.player_color_label, PLAYER_COLOR_LABEL)
 
     def setupUi(self, Dialog):
 
