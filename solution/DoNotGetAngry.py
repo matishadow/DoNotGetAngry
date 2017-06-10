@@ -1,6 +1,7 @@
 from PyQt4 import QtCore, QtGui
-from classes.layout_classes import LayoutMethodsInserter, LayoutControlsInserter
+from classes.layout_classes import *
 from classes.tile_button_decoder import TileButtonDecoder
+
 
 
 try:
@@ -18,6 +19,9 @@ class Ui_Dialog(object):
         button_name = button.objectName()
         tile_index, color, is_home_tile, is_starting_tile = TileButtonDecoder.decode_button_name(button_name)
         a = 5
+
+    def remove_counter(self, tile):
+        tile.setStyleSheet(REMOVE_CSS_STYLE)
 
     def setupUi(self, Dialog):
 
