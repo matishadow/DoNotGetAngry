@@ -23,10 +23,14 @@ class Ui_Dialog(object):
 
     def remove_counter(self, tile):
         tile.setStyleSheet(REMOVE_CSS_STYLE)
+        tile.update()
+        app.processEvents()
 
     def put_counter(self, tile, color):
         style = str.format(COUNTER_CSS_STYLE, color.lower())
         tile.setStyleSheet(style)
+        tile.update()
+        app.processEvents()
 
     def set_text(self, control, text):
         control.setText(_translate("dialog", text, None))

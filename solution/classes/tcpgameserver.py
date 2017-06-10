@@ -260,14 +260,16 @@ class GameServer:
         if playerid != self.lobby[self.g.current_color.value][0]:
             print("Not this player!!!")
             return False
-        self.user_decision_callback_buffer = data
+        else:
+            self.user_decision_callback_buffer = data
         return True
 
 
     def supdate_user_counter_choosen_callback(self,playerid,data):
         if playerid != self.lobby[self.g.current_color.value][0]:
             print("Not this player!!!")
-        self.user_counter_choosen_callback_buffer = data
+        else:
+            self.user_counter_choosen_callback_buffer = data
         return True
 
     def supdate_dice_confirm_callback(self,playerid,data):
