@@ -153,10 +153,11 @@ class TcpClient:
         self.send_to_server("supdate_user_decision_callback", decision)
 
     def cuser_counter_choosen_callback(self, data):
-        self.cprint_dice(data)
-        decision = (int(input("user_counter_choosen_callback :")), int(input("is home? :")))
-        self.send_to_server("supdate_user_counter_choosen_callback", decision)
+        self.game_window.set_text(self.game_window.turn_alert_label, COUNTER_CHOSEN_TEXT)
         return True
+
+    def send_counter_chosen(self, decision_tuple):
+        self.send_to_server("supdate_user_counter_choosen_callback", decision_tuple)
 
     def cuser_dice_confirm_callback(self, data):
         self.cprint_dice(data)

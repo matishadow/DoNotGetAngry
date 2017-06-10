@@ -49,6 +49,7 @@ class Board:
             return True
         else:
             counter_to_move_index, is_home_tile = user_counter_chosen_callback()
+            counter_to_move_index = int(counter_to_move_index)
 
             is_decision_valid = self.validate_user_decision(counter_to_move_index, throw, current_player)
             if not is_decision_valid:
@@ -110,6 +111,7 @@ class Board:
         else:
             counter_collection = self.tiles
 
+        current_position = int(current_position)
         position_to_validate = (current_position + throw) % Board.TILES_COUNT
         current_counter = counter_collection[current_position]
 

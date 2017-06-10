@@ -29,6 +29,7 @@ DICE_CSS_STYLE = _fromUtf8("background-color:transparent;border:0;\n"
                            "background-repeat:no-repeat;")
 DECISION_TEXT = _fromUtf8("Kliknij pionek z bazy\n"
                           "lub na planszy")
+COUNTER_CHOSEN_TEXT = _fromUtf8("Kliknij wybrany pionek!")
 
 
 class LayoutMethodsInserter:

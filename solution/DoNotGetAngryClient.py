@@ -21,6 +21,7 @@ class Ui_Dialog(object):
         button_name = button.objectName()
         tile_index, color, is_home_tile, is_starting_tile = TileButtonDecoder.decode_button_name(button_name)
         tcp_client.send_user_decision(0 if is_starting_tile else 1)
+        tcp_client.send_counter_chosen((tile_index, is_home_tile))
 
     def remove_counter(self, tile):
         tile.setStyleSheet(REMOVE_CSS_STYLE)
