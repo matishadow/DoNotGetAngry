@@ -559,9 +559,7 @@ class LayoutControlsInserter:
         layout.player_color_label.setObjectName(_fromUtf8("label_4"))
         layout.player_color_placeholder = QtGui.QLabel(dialog)
         layout.player_color_placeholder.setGeometry(QtCore.QRect(1060, 240, 43, 44))
-        layout.player_color_placeholder.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
-                                                                "background-image: url(graphics/counter-red.png);\n"
-                                                                "background-repeat:no-repeat;"))
+        layout.player_color_placeholder.setStyleSheet(REMOVE_CSS_STYLE)
         layout.player_color_placeholder.setText(_fromUtf8(""))
         layout.player_color_placeholder.setObjectName(_fromUtf8("label_5"))
         layout.player_color_label.setText(_translate("dialog", "Twój kolor:", None))

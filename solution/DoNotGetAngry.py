@@ -1,8 +1,7 @@
 from PyQt4 import QtCore, QtGui
 from classes.layout_classes import *
 from classes.tile_button_decoder import TileButtonDecoder
-from classes.enums import *
-
+from classes.tcpclient import TcpClient
 
 
 try:
@@ -24,8 +23,11 @@ class Ui_Dialog(object):
         tile.setStyleSheet(REMOVE_CSS_STYLE)
 
     def put_counter(self, tile, color):
-        style = str.format(COUNTER_CSS_STYLE, str(color.name).lower())
+        style = str.format(COUNTER_CSS_STYLE, color.lower())
         tile.setStyleSheet(style)
+
+    def set_player_color(self, color):
+        self.put_counter(self.player_color_placeholder, color)
 
     def setupUi(self, Dialog):
 
@@ -47,4 +49,8 @@ if __name__ == "__main__":
     ui = Ui_Dialog()
     ui.setupUi(Dialog)
     Dialog.show()
+
+    tcp_client = TcpClient(game_window=ui)
+
     sys.exit(app.exec_())
+
