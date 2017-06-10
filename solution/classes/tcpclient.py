@@ -34,8 +34,6 @@ class TcpClient:
 
         self.cconnect_to_lobby()
         sleep(0.5)
-        self.cset_ready()
-
 
         # print("end __init__")
         # end of init--------------------------------------------------------------------

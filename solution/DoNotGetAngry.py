@@ -55,6 +55,7 @@ if __name__ == "__main__":
     Dialog.show()
 
     tcp_client = TcpClient(game_window=ui)
+    ui.start_button.clicked.connect(tcp_client.cset_ready)
 
     sys.exit(app.exec_())
 

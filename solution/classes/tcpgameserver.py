@@ -244,7 +244,7 @@ class GameServer:
         playerid = self.lobby[self.g.current_color.value][0]
         dice = self.g.dice.last_throw
         self.send_to_client(playerid, "cuser_dice_confirm_callback", dice)
-        while (self.user_dice_confirm == False):  # oczekiwanie na odpowiedź przez zmienną
+        while not self.user_dice_confirm:  # oczekiwanie na odpowiedź przez zmienną
             sleep(0.5)
         ret = self.user_dice_confirm
         self.user_dice_confirm = False

@@ -539,13 +539,13 @@ class LayoutControlsInserter:
             _fromUtf8("background-image:url(graphics/title.png); background-repeat:no-repeat;"))
         layout.title.setText(_fromUtf8(""))
         layout.title.setObjectName(_fromUtf8("title"))
-        layout.startbutton = QtGui.QPushButton(dialog)
-        layout.startbutton.setGeometry(QtCore.QRect(900, 140, 248, 73))
-        layout.startbutton.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
+        layout.start_button = QtGui.QPushButton(dialog)
+        layout.start_button.setGeometry(QtCore.QRect(900, 140, 248, 73))
+        layout.start_button.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
                                                    "background-image: url(graphics/start.png);\n"
                                                    "background-repeat:no-repeat;"))
-        layout.startbutton.setText(_fromUtf8(""))
-        layout.startbutton.setObjectName(_fromUtf8("startbutton"))
+        layout.start_button.setText(_fromUtf8(""))
+        layout.start_button.setObjectName(_fromUtf8("startbutton"))
         layout.dice = QtGui.QPushButton(dialog)
         layout.dice.setGeometry(QtCore.QRect(939, 430, 171, 171))
         layout.dice.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
