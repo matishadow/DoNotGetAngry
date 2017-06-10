@@ -29,6 +29,10 @@ class Ui_Dialog(object):
     def set_text(self, control, text):
         control.setText(_translate("dialog", text, None))
 
+    def set_dice(self, number):
+        style = str.format(DICE_CSS_STYLE, number)
+        self.dice.setStyleSheet(style)
+
     def set_player_color(self, color):
         self.put_counter(self.player_color_placeholder, color)
         self.set_text(self.player_color_label, PLAYER_COLOR_LABEL)

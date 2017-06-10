@@ -24,6 +24,9 @@ CURRENT_TURN_TEXT = _fromUtf8("Twoja kolej. Rzuć kostką!")
 EMPTY_TEXT = _fromUtf8("")
 WAIT_TURN_TEXT = _fromUtf8("Poczekaj na swoją kolej!")
 PLAYER_COLOR_LABEL = _fromUtf8("Twój kolor:")
+DICE_CSS_STYLE = _fromUtf8("background-color:transparent;border:0;\n"
+                           "background-image: url(graphics/dice{0}.png);\n"
+                           "background-repeat:no-repeat;")
 
 
 class LayoutMethodsInserter:
@@ -542,14 +545,14 @@ class LayoutControlsInserter:
         layout.start_button = QtGui.QPushButton(dialog)
         layout.start_button.setGeometry(QtCore.QRect(900, 140, 248, 73))
         layout.start_button.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
-                                                   "background-image: url(graphics/start.png);\n"
-                                                   "background-repeat:no-repeat;"))
+                                                    "background-image: url(graphics/start.png);\n"
+                                                    "background-repeat:no-repeat;"))
         layout.start_button.setText(_fromUtf8(""))
         layout.start_button.setObjectName(_fromUtf8("startbutton"))
         layout.dice = QtGui.QPushButton(dialog)
         layout.dice.setGeometry(QtCore.QRect(939, 430, 171, 171))
         layout.dice.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
-                                            "background-image: url(graphics/dice1.png);\n"
+                                            "background-image: url(graphics/dice6.png);\n"
                                             "background-repeat:no-repeat;"))
         layout.dice.setText(_fromUtf8(""))
         layout.dice.setObjectName(_fromUtf8("dice"))
@@ -568,3 +571,4 @@ class LayoutControlsInserter:
         layout.player_color_placeholder.setObjectName(_fromUtf8("label_5"))
         layout.player_color_label.setText(_translate("dialog", EMPTY_TEXT, None))
         layout.turn_alert_label.setText(_translate("dialog", EMPTY_TEXT, None))
+        layout.tiles = [layout.tile_0, layout.tile_1, layout.tile_2, layout.tile_3, layout.tile_4, layout.tile_5, layout.tile_6, layout.tile_7, layout.tile_8, layout.tile_9, layout.tile_10, layout.tile_11, layout.tile_12, layout.tile_13, layout.tile_14, layout.tile_15, layout.tile_16, layout.tile_17, layout.tile_18, layout.tile_19, layout.tile_20, layout.tile_21, layout.tile_22, layout.tile_23, layout.tile_24, layout.tile_25, layout.tile_26, layout.tile_27, layout.tile_28, layout.tile_29, layout.tile_30, layout.tile_31, layout.tile_32, layout.tile_33, layout.tile_34, layout.tile_35, layout.tile_36, layout.tile_37, layout.tile_38, layout.tile_39]

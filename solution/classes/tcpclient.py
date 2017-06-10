@@ -26,7 +26,7 @@ class TcpClient:
                          "cuser_counter_choosen_callback", "cuser_dice_confirm_callback", "cprint_my_color"]
 
         self.locallobby = []
-        self.localboard = []
+        self.local_board = [None] * 40
         self.game_window = game_window
 
         self.ts = TcpServer(self.ihost, self.iport, verbose=False)
@@ -94,6 +94,8 @@ class TcpClient:
 
     def cprint_dice(self, data):
         print(data)
+
+        self.game_window.set_dice(str(data))
         return True
 
     def cprint_board(self, data):
@@ -101,9 +103,22 @@ class TcpClient:
         for index in range(len(data)):
             str_board.append(None)
             if (data[index] != None):
-                str_board[index] = str(data[index]) + "[" + str(index) + "]"
+                str_board[index] = str(data[index])
         print(str(str_board))
-        # print(data)
+
+        for index in range(len(str_board)):
+            tile = str_board[index]
+            window_tile = self.game_window.tiles[index]
+            if tile == self.local_board[index]:
+                continue
+
+            if tile is None:
+                self.game_window.remove_counter(window_tile)
+            else:
+                self.game_window.put_counter(window_tile, tile)
+
+        self.local_board = list(str_board)
+
         return True
 
     def cprint_status(self, data):
