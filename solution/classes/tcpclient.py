@@ -3,6 +3,7 @@ from json import loads,dumps
 from random import randint,random
 from threading import Lock
 from time import sleep
+from uuid import uuid4
 from classes.enums import *
 
 
@@ -10,7 +11,7 @@ class TcpClient:
     def __init__(self,serverhost="localhost",serverport=2223):
         self.serverhost = serverhost
         self.serverport = serverport
-        self.playerid = random()
+        self.playerid = uuid4().hex
         self.my_color = None
         print("playerid: " + str(self.playerid))
 
