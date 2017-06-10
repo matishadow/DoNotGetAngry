@@ -30,7 +30,7 @@ except AttributeError:
 class Ui_Dialog(object):
     def tile_click(self, button):
         button_name = button.objectName()
-        tile_index, colour, is_home_tile, is_starting_tile = TileButtonDecoder.decode_button_name(button_name)
+        tile_index, color, is_home_tile, is_starting_tile = TileButtonDecoder.decode_button_name(button_name)
         a = 5
 
     def setupUi(self, Dialog):
@@ -475,23 +475,23 @@ class Ui_Dialog(object):
                                           "background-repeat:no-repeat;"))
         self.dice.setText(_fromUtf8(""))
         self.dice.setObjectName(_fromUtf8("dice"))
-        self.label_2 = QtGui.QLabel(Dialog)
-        self.label_2.setGeometry(QtCore.QRect(920, 390, 221, 31))
-        self.label_2.setStyleSheet(_fromUtf8("font-size:19px"))
-        self.label_2.setObjectName(_fromUtf8("label_2"))
-        self.label_4 = QtGui.QLabel(Dialog)
-        self.label_4.setGeometry(QtCore.QRect(950, 240, 111, 41))
-        self.label_4.setStyleSheet(_fromUtf8("font-size:20px"))
-        self.label_4.setObjectName(_fromUtf8("label_4"))
-        self.label_5 = QtGui.QLabel(Dialog)
-        self.label_5.setGeometry(QtCore.QRect(1060, 240, 43, 44))
-        self.label_5.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
+        self.turn_alert_label = QtGui.QLabel(Dialog)
+        self.turn_alert_label.setGeometry(QtCore.QRect(920, 390, 221, 31))
+        self.turn_alert_label.setStyleSheet(_fromUtf8("font-size:19px"))
+        self.turn_alert_label.setObjectName(_fromUtf8("label_2"))
+        self.player_color_label = QtGui.QLabel(Dialog)
+        self.player_color_label.setGeometry(QtCore.QRect(950, 240, 111, 41))
+        self.player_color_label.setStyleSheet(_fromUtf8("font-size:20px"))
+        self.player_color_label.setObjectName(_fromUtf8("label_4"))
+        self.player_color_placeholder = QtGui.QLabel(Dialog)
+        self.player_color_placeholder.setGeometry(QtCore.QRect(1060, 240, 43, 44))
+        self.player_color_placeholder.setStyleSheet(_fromUtf8("background-color:transparent;border:0;\n"
                                              "background-image: url(../graphics/counter-red.png);\n"
                                              "background-repeat:no-repeat;"))
-        self.label_5.setText(_fromUtf8(""))
-        self.label_5.setObjectName(_fromUtf8("label_5"))
-        self.label_4.setText(_translate("Dialog", "Twój kolor:", None))
-        self.label_2.setText(_translate("Dialog", "Twoja kolej. Rzuć kostką!", None))
+        self.player_color_placeholder.setText(_fromUtf8(""))
+        self.player_color_placeholder.setObjectName(_fromUtf8("label_5"))
+        self.player_color_label.setText(_translate("Dialog", "Twój kolor:", None))
+        self.turn_alert_label.setText(_translate("Dialog", "Twoja kolej. Rzuć kostką!", None))
 
         LayoutMethodsInserter.insert_methods(self)
 
