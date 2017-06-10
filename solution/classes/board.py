@@ -46,6 +46,7 @@ class Board:
                 return False
 
             self.move_counter(counter, throw, players)
+            return True
         else:
             counter_to_move_index, is_home_tile = user_counter_chosen_callback()
 
@@ -66,6 +67,7 @@ class Board:
                 raise Exception("This is not your counter!")
 
             self.move_counter(counter, throw, players, is_home_tile)
+            return True
 
     def check_eliminate(self, moving_color, position):
         counter_on_position = self.tiles[position]
@@ -129,7 +131,7 @@ class Board:
         is_decision_valid = self.validate_user_decision(counter_index, 0, current_player)
         if not is_decision_valid:
             current_player.starting_tiles.append(counter)
-            return False
+            return None
 
         self.try_eliminate(players, counter, counter_index)
 

@@ -20,34 +20,28 @@ class Ui_Dialog(object):
     def tile_click(self, button):
         button_name = button.objectName()
         tile_index, color, is_home_tile, is_starting_tile = TileButtonDecoder.decode_button_name(button_name)
+        tcp_client.send_user_decision(0 if is_starting_tile else 1)
 
     def remove_counter(self, tile):
         tile.setStyleSheet(REMOVE_CSS_STYLE)
-        tile.update()
-        app.processEvents()
 
     def put_counter(self, tile, color):
         style = str.format(COUNTER_CSS_STYLE, color.lower())
         tile.setStyleSheet(style)
-        tile.update()
-        app.processEvents()
 
     def set_text(self, control, text):
         control.setText(_translate("dialog", text, None))
-        app.processEvents()
 
     def set_dice(self, number):
         self.dice.setStyleSheet(REMOVE_CSS_STYLE)
-        sleep(1)
+        sleep(0.3)
 
         style = str.format(DICE_CSS_STYLE, number)
         self.dice.setStyleSheet(style)
-        app.processEvents()
 
     def set_player_color(self, color):
         self.put_counter(self.player_color_placeholder, color)
         self.set_text(self.player_color_label, PLAYER_COLOR_LABEL)
-        app.processEvents()
 
     def setupUi(self, Dialog):
 

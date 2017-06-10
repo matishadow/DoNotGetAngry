@@ -27,6 +27,8 @@ PLAYER_COLOR_LABEL = _fromUtf8("Twój kolor:")
 DICE_CSS_STYLE = _fromUtf8("background-color:transparent;border:0;\n"
                            "background-image: url(graphics/dice{0}.png);\n"
                            "background-repeat:no-repeat;")
+DECISION_TEXT = _fromUtf8("Kliknij pionek z bazy\n"
+                          "lub na planszy")
 
 
 class LayoutMethodsInserter:
@@ -557,7 +559,7 @@ class LayoutControlsInserter:
         layout.dice.setText(_fromUtf8(""))
         layout.dice.setObjectName(_fromUtf8("dice"))
         layout.turn_alert_label = QtGui.QLabel(dialog)
-        layout.turn_alert_label.setGeometry(QtCore.QRect(920, 390, 221, 31))
+        layout.turn_alert_label.setGeometry(QtCore.QRect(920, 350, 221, 45))
         layout.turn_alert_label.setStyleSheet(_fromUtf8("font-size:19px"))
         layout.turn_alert_label.setObjectName(_fromUtf8("label_2"))
         layout.player_color_label = QtGui.QLabel(dialog)

@@ -146,11 +146,11 @@ class TcpClient:
         self.send_to_server("sstart_game", True)
 
     def cuserdecision_callback(self, data):
-        # print("dice: " + str(data))
-        self.cprint_dice(data)
-        decision = int(input("userdecision_callback :"))
-        self.send_to_server("supdate_user_decision_callback", decision)
+        self.game_window.set_text(self.game_window.turn_alert_label, DECISION_TEXT)
         return True
+
+    def send_user_decision(self, decision):
+        self.send_to_server("supdate_user_decision_callback", decision)
 
     def cuser_counter_choosen_callback(self, data):
         self.cprint_dice(data)

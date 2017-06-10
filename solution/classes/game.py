@@ -77,6 +77,7 @@ class Game:
 
                         if decision == UserDecision.OUT.name:
                             decision_was_valid = self.board.bring_out_counter(current_player, self.players)
+                            decision_was_valid = decision_was_valid is not None
                         elif decision == UserDecision.MOVE.name:
                             decision_was_valid = self.board.move_when_out(
                                 current_player, throw, user_counter_chosen_callback, self.players, self)
@@ -85,7 +86,7 @@ class Game:
 
                         self.decision_was_valid = decision_was_valid
 
-                        if decision_was_valid:
+                        if self.decision_was_valid:
                             alert = ""
                             break
                         else:
