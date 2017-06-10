@@ -16,6 +16,11 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
+REMOVE_CSS_STYLE = _fromUtf8("background-color:TRANSPARENT;border:0;")
+COUNTER_CSS_STYLE = _fromUtf8("background-color:transparent;border:0;\n"
+                              "border-image: url(graphics/counter-{0}.png);\n"
+                              "background-repeat:no-repeat;")
+
 
 class LayoutMethodsInserter:
     @staticmethod
