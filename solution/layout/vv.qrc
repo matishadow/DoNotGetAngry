@@ -1,0 +1,22 @@
+<RCC>
+  <qresource prefix="counters">
+    <file>../graphics/counter-blue.png</file>
+    <file>../graphics/counter-green.png</file>
+    <file>../graphics/counter-red.png</file>
+    <file>../graphics/counter-yellow.png</file>
+  </qresource>
+  <qresource prefix="buttons">
+    <file>../graphics/start.png</file>
+  </qresource>
+  <qresource prefix="title">
+    <file>../graphics/title.png</file>
+  </qresource>
+  <qresource prefix="dice">
+    <file>../graphics/dice1.png</file>
+    <file>../graphics/dice2.png</file>
+    <file>../graphics/dice3.png</file>
+    <file>../graphics/dice4.png</file>
+    <file>../graphics/dice5.png</file>
+    <file>../graphics/dice6.png</file>
+  </qresource>
+</RCC>

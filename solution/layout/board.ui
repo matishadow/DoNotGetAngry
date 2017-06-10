@@ -1,0 +1,1386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1280</width>
+    <height>720</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1280</width>
+    <height>720</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Do Not Get Angry</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>-4</x>
+     <y>0</y>
+     <width>1280</width>
+     <height>720</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>1280</width>
+     <height>720</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>1280</width>
+     <height>720</height>
+    </size>
+   </property>
+   <property name="sizeIncrement">
+    <size>
+     <width>1280</width>
+     <height>720</height>
+    </size>
+   </property>
+   <property name="baseSize">
+    <size>
+     <width>1280</width>
+     <height>720</height>
+    </size>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../graphics/board.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="blue_starting_tile_0">
+   <property name="geometry">
+    <rect>
+     <x>191</x>
+     <y>70</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+border-image: url(:/counters/graphics/counter-blue.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="blue_starting_tile_1">
+   <property name="geometry">
+    <rect>
+     <x>241</x>
+     <y>70</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+background-image: url(:/counters/graphics/counter-blue.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="blue_starting_tile_2">
+   <property name="geometry">
+    <rect>
+     <x>191</x>
+     <y>121</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+border-image: url(:/counters/graphics/counter-blue.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="blue_starting_tile_3">
+   <property name="geometry">
+    <rect>
+     <x>241</x>
+     <y>121</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+border-image: url(:/counters/graphics/counter-blue.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="yellow_starting_tile_0">
+   <property name="geometry">
+    <rect>
+     <x>191</x>
+     <y>548</y>
+     <width>42</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>ArrowCursor</cursorShape>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+background-image: url(:/counters/graphics/counter-yellow.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="yellow_starting_tile_1">
+   <property name="geometry">
+    <rect>
+     <x>241</x>
+     <y>548</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+background-image: url(:/counters/graphics/counter-yellow.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="yellow_starting_tile_2">
+   <property name="geometry">
+    <rect>
+     <x>191</x>
+     <y>598</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+background-image: url(:/counters/graphics/counter-yellow.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="yellow_starting_tile_3">
+   <property name="geometry">
+    <rect>
+     <x>241</x>
+     <y>598</y>
+     <width>43</width>
+     <height>45</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+background-image: url(:/counters/graphics/counter-yellow.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="green_starting_tile_0">
+   <property name="geometry">
+    <rect>
+     <x>673</x>
+     <y>548</y>
+     <width>43</width>
+     <height>44</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+background-image: url(:/counters/graphics/counter-green.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="green_starting_tile_1">
+   <property name="geometry">
+    <rect>
+     <x>723</x>
+     <y>548</y>
+     <width>43</width>
+     <height>44</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+background-image: url(:/counters/graphics/counter-green.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="green_starting_tile_2">
+   <property name="geometry">
+    <rect>
+     <x>672</x>
+     <y>598</y>
+     <width>43</width>
+     <height>44</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+background-image: url(:/counters/graphics/counter-green.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="green_starting_tile_3">
+   <property name="geometry">
+    <rect>
+     <x>723</x>
+     <y>598</y>
+     <width>43</width>
+     <height>44</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+background-image: url(:/counters/graphics/counter-green.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="red_starting_tile_0">
+   <property name="geometry">
+    <rect>
+     <x>673</x>
+     <y>70</y>
+     <width>43</width>
+     <height>44</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+background-image: url(:/counters/graphics/counter-red.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="red_starting_tile_1">
+   <property name="geometry">
+    <rect>
+     <x>723</x>
+     <y>70</y>
+     <width>43</width>
+     <height>44</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+background-image: url(:/counters/graphics/counter-red.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="red_starting_tile_2">
+   <property name="geometry">
+    <rect>
+     <x>673</x>
+     <y>120</y>
+     <width>43</width>
+     <height>44</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+background-image: url(:/counters/graphics/counter-red.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="red_starting_tile_3">
+   <property name="geometry">
+    <rect>
+     <x>723</x>
+     <y>120</y>
+     <width>43</width>
+     <height>44</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+background-image: url(:/counters/graphics/counter-red.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_0">
+   <property name="geometry">
+    <rect>
+     <x>172</x>
+     <y>294</y>
+     <width>43</width>
+     <height>44</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_1">
+   <property name="geometry">
+    <rect>
+     <x>227</x>
+     <y>294</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_2">
+   <property name="geometry">
+    <rect>
+     <x>281</x>
+     <y>294</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_3">
+   <property name="geometry">
+    <rect>
+     <x>336</x>
+     <y>294</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_4">
+   <property name="geometry">
+    <rect>
+     <x>394</x>
+     <y>294</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_5">
+   <property name="geometry">
+    <rect>
+     <x>394</x>
+     <y>240</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_6">
+   <property name="geometry">
+    <rect>
+     <x>394</x>
+     <y>186</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_7">
+   <property name="geometry">
+    <rect>
+     <x>394</x>
+     <y>132</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_8">
+   <property name="geometry">
+    <rect>
+     <x>394</x>
+     <y>78</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_9">
+   <property name="geometry">
+    <rect>
+     <x>452</x>
+     <y>78</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_10">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>78</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_11">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>132</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_12">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>186</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_13">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>240</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_14">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>294</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_15">
+   <property name="geometry">
+    <rect>
+     <x>568</x>
+     <y>294</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_16">
+   <property name="geometry">
+    <rect>
+     <x>626</x>
+     <y>294</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_17">
+   <property name="geometry">
+    <rect>
+     <x>684</x>
+     <y>294</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_18">
+   <property name="geometry">
+    <rect>
+     <x>742</x>
+     <y>294</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_19">
+   <property name="geometry">
+    <rect>
+     <x>742</x>
+     <y>348</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_20">
+   <property name="geometry">
+    <rect>
+     <x>742</x>
+     <y>402</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_21">
+   <property name="geometry">
+    <rect>
+     <x>684</x>
+     <y>402</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_22">
+   <property name="geometry">
+    <rect>
+     <x>626</x>
+     <y>402</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_23">
+   <property name="geometry">
+    <rect>
+     <x>568</x>
+     <y>402</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_24">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>402</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_25">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>456</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_26">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>510</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_27">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>563</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_28">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>619</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_29">
+   <property name="geometry">
+    <rect>
+     <x>452</x>
+     <y>619</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_30">
+   <property name="geometry">
+    <rect>
+     <x>394</x>
+     <y>619</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_31">
+   <property name="geometry">
+    <rect>
+     <x>394</x>
+     <y>563</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_32">
+   <property name="geometry">
+    <rect>
+     <x>394</x>
+     <y>510</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_33">
+   <property name="geometry">
+    <rect>
+     <x>394</x>
+     <y>456</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_34">
+   <property name="geometry">
+    <rect>
+     <x>394</x>
+     <y>402</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_35">
+   <property name="geometry">
+    <rect>
+     <x>336</x>
+     <y>402</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_36">
+   <property name="geometry">
+    <rect>
+     <x>281</x>
+     <y>402</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_37">
+   <property name="geometry">
+    <rect>
+     <x>227</x>
+     <y>402</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_38">
+   <property name="geometry">
+    <rect>
+     <x>172</x>
+     <y>402</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tile_39">
+   <property name="geometry">
+    <rect>
+     <x>172</x>
+     <y>348</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="blue_home_tile_1">
+   <property name="geometry">
+    <rect>
+     <x>281</x>
+     <y>348</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="blue_home_tile_2">
+   <property name="geometry">
+    <rect>
+     <x>336</x>
+     <y>348</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="blue_home_tile_3">
+   <property name="geometry">
+    <rect>
+     <x>394</x>
+     <y>348</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="red_home_tile_0">
+   <property name="geometry">
+    <rect>
+     <x>452</x>
+     <y>132</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="red_home_tile_1">
+   <property name="geometry">
+    <rect>
+     <x>452</x>
+     <y>186</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="red_home_tile_2">
+   <property name="geometry">
+    <rect>
+     <x>452</x>
+     <y>240</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="red_home_tile_3">
+   <property name="geometry">
+    <rect>
+     <x>452</x>
+     <y>294</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="green_home_tile_0">
+   <property name="geometry">
+    <rect>
+     <x>684</x>
+     <y>348</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="green_home_tile_1">
+   <property name="geometry">
+    <rect>
+     <x>626</x>
+     <y>348</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="green_home_tile_2">
+   <property name="geometry">
+    <rect>
+     <x>568</x>
+     <y>348</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="green_home_tile_3">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>348</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="yellow_home_tile_3">
+   <property name="geometry">
+    <rect>
+     <x>452</x>
+     <y>402</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="yellow_home_tile_2">
+   <property name="geometry">
+    <rect>
+     <x>452</x>
+     <y>456</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="yellow_home_tile_1">
+   <property name="geometry">
+    <rect>
+     <x>452</x>
+     <y>510</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="yellow_home_tile_0">
+   <property name="geometry">
+    <rect>
+     <x>452</x>
+     <y>563</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="blue_home_tile_0">
+   <property name="geometry">
+    <rect>
+     <x>227</x>
+     <y>348</y>
+     <width>43</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:TRANSPARENT;border:0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="title">
+   <property name="geometry">
+    <rect>
+     <x>840</x>
+     <y>50</y>
+     <width>381</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image:url(:/title/graphics/title.png); background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="startbutton">
+   <property name="geometry">
+    <rect>
+     <x>900</x>
+     <y>140</y>
+     <width>248</width>
+     <height>73</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+background-image: url(:/buttons/graphics/start.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="dice">
+   <property name="geometry">
+    <rect>
+     <x>939</x>
+     <y>430</y>
+     <width>171</width>
+     <height>171</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+background-image: url(:/dice/graphics/dice1.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>950</x>
+     <y>240</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size:20px</string>
+   </property>
+   <property name="text">
+    <string>Twój kolor:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>1060</x>
+     <y>240</y>
+     <width>43</width>
+     <height>44</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;border:0;
+background-image: url(:/counters/graphics/counter-red.png);
+background-repeat:no-repeat;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>920</x>
+     <y>390</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size:19px</string>
+   </property>
+   <property name="text">
+    <string>Twoja kolej. Rzuć kostką!</string>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="vv.qrc"/>
+ </resources>
+ <connections/>
+</ui>
