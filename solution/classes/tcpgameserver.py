@@ -238,16 +238,22 @@ class GameServer:
         self.user_counter_choosen_callback_buffer = None
         return ret
 
-    def suser_dice_confirm_callback(self):
+    def send_sync_clients(self):
         self.ssend_current_color_to_all()
         self.ssend_board_to_all()
-        playerid = self.lobby[self.g.current_color.value][0]
-        dice = self.g.dice.last_throw
-        self.send_to_client(playerid, "cuser_dice_confirm_callback", dice)
+
+    def suser_dice_confirm_callback(self):
+        self.send_sync_clients()
         while not self.user_dice_confirm:  # oczekiwanie na odpowiedź przez zmienną
             sleep(0.5)
         ret = self.user_dice_confirm
         self.user_dice_confirm = False
+
+        self.send_sync_clients()
+        playerid = self.lobby[self.g.current_color.value][0]
+        dice = self.g.dice.last_throw
+        self.send_to_client(playerid, "cuser_dice_confirm_callback", dice)
+
         return ret
 
     def supdate_user_decision_callback(self,playerid,data):
@@ -267,7 +273,8 @@ class GameServer:
     def supdate_dice_confirm_callback(self,playerid,data):
         if playerid != self.lobby[self.g.current_color.value][0]:
             print("Not this player!!!")
-        self.user_dice_confirm = data
+        else:
+            self.user_dice_confirm = data
         return True
 
 if __name__ == "__main__":

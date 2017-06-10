@@ -160,9 +160,10 @@ class TcpClient:
 
     def cuser_dice_confirm_callback(self, data):
         self.cprint_dice(data)
-        input("Dice OK?")
-        self.send_to_server("supdate_dice_confirm_callback", True)
         return True
+
+    def send_dice_confirm(self):
+        self.send_to_server("supdate_dice_confirm_callback", True)
 
 
 if __name__ == "__main__":

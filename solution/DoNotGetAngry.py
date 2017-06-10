@@ -1,3 +1,5 @@
+from time import sleep
+
 from PyQt4 import QtCore, QtGui
 from classes.layout_classes import *
 from classes.tile_button_decoder import TileButtonDecoder
@@ -28,14 +30,20 @@ class Ui_Dialog(object):
 
     def set_text(self, control, text):
         control.setText(_translate("dialog", text, None))
+        app.processEvents()
 
     def set_dice(self, number):
+        self.dice.setStyleSheet(REMOVE_CSS_STYLE)
+        sleep(1)
+
         style = str.format(DICE_CSS_STYLE, number)
         self.dice.setStyleSheet(style)
+        app.processEvents()
 
     def set_player_color(self, color):
         self.put_counter(self.player_color_placeholder, color)
         self.set_text(self.player_color_label, PLAYER_COLOR_LABEL)
+        app.processEvents()
 
     def setupUi(self, Dialog):
 
@@ -60,6 +68,7 @@ if __name__ == "__main__":
 
     tcp_client = TcpClient(game_window=ui)
     ui.start_button.clicked.connect(tcp_client.cset_ready)
+    ui.dice.clicked.connect(tcp_client.send_dice_confirm)
 
     sys.exit(app.exec_())
 
