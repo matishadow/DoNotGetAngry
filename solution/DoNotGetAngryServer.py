@@ -180,6 +180,30 @@ class GameServer:
         self.send_to_all("cprint_board", str_board)
         return True
 
+    def ssend_home_tiles_all(self):
+        home_tiles = []
+        for player in self.g.players:
+            home_tiles = home_tiles + self.prepare_special_tiles(player.home_tiles)
+        self.send_to_all("cprint_home_tiles", home_tiles)
+
+    def ssend_starting_tiles_all(self):
+        starting_tiles = []
+        for player in self.g.players:
+            starting_tiles = starting_tiles + self.prepare_special_tiles(player.starting_tiles)
+        self.send_to_all("cprint_starting_tiles", starting_tiles)
+
+    def prepare_special_tiles(self, tiles):
+        tile_count = len(tiles)
+        new_tiles = list(tiles)
+        if tile_count < 4:
+            new_tiles = new_tiles + ([None] * (4 - tile_count))
+        for i in range(len(new_tiles)):
+            tile = new_tiles[i]
+            if tile is not None:
+                new_tiles[i] = tile.color.name
+
+        return new_tiles
+
     def ssend_current_color_to_all(self):
         self.send_to_all("cprint_current_color", self.g.current_color.name)
         return True
@@ -242,6 +266,8 @@ class GameServer:
     def send_sync_clients(self):
         self.ssend_current_color_to_all()
         self.ssend_board_to_all()
+        self.ssend_home_tiles_all()
+        self.ssend_starting_tiles_all()
 
     def suser_dice_confirm_callback(self):
         self.send_sync_clients()

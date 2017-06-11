@@ -23,10 +23,13 @@ class TcpClient:
         self.iport = randint(49152, 65535)
         self.commands = ["creply", "test2", "cprint_msg", "cprint_lobby", "cprint_status", "cprint_board",
                          "cprint_current_color", "cprint_dice", "cuserdecision_callback",
-                         "cuser_counter_choosen_callback", "cuser_dice_confirm_callback", "cprint_my_color"]
+                         "cuser_counter_choosen_callback", "cuser_dice_confirm_callback", "cprint_my_color",
+                         "cprint_home_tiles", "cprint_starting_tiles"]
 
         self.locallobby = []
         self.local_board = [None] * 40
+        self.local_starting_tiles = ["BLUE"] * 4 + ["RED"] * 4 + ["GREEN"] * 4 + ["YELLOW"] * 4
+        self.local_home_tiles = [None] * (4 * 4)
         self.game_window = game_window
 
         self.ts = TcpServer(self.ihost, self.iport, verbose=False)
@@ -97,6 +100,36 @@ class TcpClient:
 
         self.game_window.set_dice(str(data))
         return True
+
+    def cprint_home_tiles(self, data):
+        for index in range(len(data)):
+            tile = data[index]
+            window_tile = self.game_window.home_tiles[index]
+
+            if tile == self.local_home_tiles[index]:
+                continue
+
+            if tile is None:
+                self.game_window.remove_counter(window_tile)
+            else:
+                self.game_window.put_counter(window_tile, tile)
+
+        self.local_home_tiles = list(data)
+
+    def cprint_starting_tiles(self, data):
+        for index in range(len(data)):
+            tile = data[index]
+            window_tile = self.game_window.starting_tiles[index]
+
+            if tile == self.local_starting_tiles[index]:
+                continue
+
+            if tile is None:
+                self.game_window.remove_counter(window_tile)
+            else:
+                self.game_window.put_counter(window_tile, tile)
+
+        self.local_starting_tiles = list(data)
 
     def cprint_board(self, data):
         str_board = []
